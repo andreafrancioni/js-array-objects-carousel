@@ -109,6 +109,11 @@ document.getElementById("btn-pause").addEventListener("click", function(){
     clearInterval(intervalID);
 });
 
+document.getElementById("btn-reverse").addEventListener("click", function(){
+    console.log("immagini reverse");
+    intervalID = setInterval(backImage, 1000);
+});
+
 
 /*** FUNZIONI ***/
 function nextImage() {
@@ -126,6 +131,27 @@ function nextImage() {
         newTitle[currentImg].classList.remove("active");
         newDesc[currentImg].classList.remove("active");
         currentImg = 0;
+        newImage[currentImg].classList.add("active");
+        newTitle[currentImg].classList.add("active");
+        newDesc[currentImg].classList.add("active");
+    }
+};
+
+function backImage() {
+    console.log("indietro");
+    if (currentImg > 0) {
+        newImage[currentImg].classList.remove("active");
+        newTitle[currentImg].classList.remove("active");
+        newDesc[currentImg].classList.remove("active");
+        currentImg--;
+        newImage[currentImg].classList.add("active");
+        newTitle[currentImg].classList.add("active");
+        newDesc[currentImg].classList.add("active");
+    }else if (currentImg == 0) {
+        newImage[currentImg].classList.remove("active");
+        newTitle[currentImg].classList.remove("active");
+        newDesc[currentImg].classList.remove("active");
+        currentImg = images.length - 1;
         newImage[currentImg].classList.add("active");
         newTitle[currentImg].classList.add("active");
         newDesc[currentImg].classList.add("active");
