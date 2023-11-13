@@ -1,3 +1,5 @@
+/*** ARRAY DI OGGETTI ***/
+
 const images = [
     {
         image: 'img/01.webp',
@@ -26,6 +28,8 @@ let immaginiDaInserire = "";
 let titoloDaInserire ="";
 let descDaInserire ="";
 
+
+/*** INSERISCO IN PAGINA LE IMMAGINI, TITOLI E DESCRIZIONE DEGLI OGGETTI IN ARRAY ***/
 for (let i = 0; i < images.length; i++) {
     const immagine = images[i].image;
     const titolo = images[i].title;
@@ -37,6 +41,8 @@ for (let i = 0; i < images.length; i++) {
                     `;}
 document.getElementById("images").innerHTML = immaginiDaInserire;
 
+
+/*** RECUPERO GLI ELEMENTI CON ID E CLASSI E GLI ASSEGNO LA CLASSE DISPLAY BLOCK ***/
 let currentImg = 0;
 const newImage = document.querySelectorAll(".images img");
 const newTitle = document.querySelectorAll("#imageTitle");
@@ -46,8 +52,8 @@ newImage[currentImg].classList.add("active");
 newTitle[currentImg].classList.add("active");
 newDesc[currentImg].classList.add("active");
 
-
-document.getElementById("btn-next").addEventListener("click", function () {
+/*** AL CLICK DEL PULSANTE AVANTI L'IMMAGINE, TESTO E DESCRIZIONE PASSANO LA CLASSE BLOCK ALLA PROSSIMA TERZINA DI ELEMENTI ***/
+document.getElementById("btn-next").addEventListener("click", function nextImage() {
     console.log("avanti");
     if (currentImg < images.length - 1) {
         newImage[currentImg].classList.remove("active");
@@ -68,7 +74,8 @@ document.getElementById("btn-next").addEventListener("click", function () {
     }
 });
 
-document.getElementById("btn-back").addEventListener("click", function () {
+/*** AL CLICK DEL PULSANTE INDIETRO L'IMMAGINE, TESTO E DESCRIZIONE PASSANO LA CLASSE BLOCK ALLA PRECEDENTE TERZINA DI ELEMENTI ***/
+document.getElementById("btn-back").addEventListener("click", function backImage() {
     console.log("indietro");
     if (currentImg > 0) {
         newImage[currentImg].classList.remove("active");
@@ -89,4 +96,38 @@ document.getElementById("btn-back").addEventListener("click", function () {
     }
 });
 
+let intervalID;
 
+document.getElementById("btn-play").addEventListener("click", function(){
+    console.log("immagini play");
+    intervalID = setInterval(nextImage, 1000);
+});
+
+
+document.getElementById("btn-pause").addEventListener("click", function(){
+    console.log("immagini stop");
+    clearInterval(intervalID);
+});
+
+
+/*** FUNZIONI ***/
+function nextImage() {
+    console.log("avanti");
+    if (currentImg < images.length - 1) {
+        newImage[currentImg].classList.remove("active");
+        newTitle[currentImg].classList.remove("active");
+        newDesc[currentImg].classList.remove("active");
+        currentImg++;
+        newImage[currentImg].classList.add("active");
+        newTitle[currentImg].classList.add("active");
+        newDesc[currentImg].classList.add("active");
+    }else if (currentImg == images.length - 1) {
+        newImage[currentImg].classList.remove("active");
+        newTitle[currentImg].classList.remove("active");
+        newDesc[currentImg].classList.remove("active");
+        currentImg = 0;
+        newImage[currentImg].classList.add("active");
+        newTitle[currentImg].classList.add("active");
+        newDesc[currentImg].classList.add("active");
+    }
+};

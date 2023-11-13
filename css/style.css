@@ -36,19 +36,27 @@ body{
 
 #imageTitle{
     position: absolute;
-    bottom: 100px;
+    bottom: 50px;
     right: 50px;
     font-size: 2rem;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight: 600;
     color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #imageDesc{
     position: absolute;
-    bottom: 80px;
+    bottom: 20px;
     right: 50px;
     font-size: 1rem;
     font-weight: 600;
     color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#arrow-buttons{
+    position: absolute;
+    top: 280px;
+    left: 715px;
 }
