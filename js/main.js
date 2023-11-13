@@ -23,26 +23,48 @@ const images = [
 ];
 
 let immaginiDaInserire = "";
+let titoloDaInserire ="";
+let descDaInserire ="";
+
 for (let i = 0; i < images.length; i++) {
-    const percorsoImmagine = images[i].image;
-    immaginiDaInserire += `<img src="${percorsoImmagine}">`;
-}
+    const immagine = images[i].image;
+    const titolo = images[i].title;
+    const desc = images[i].text;
+
+    immaginiDaInserire += `<img src="${immagine}">
+                        <p id="imageTitle">${titolo}</p>
+                        <p id="imageDesc">${desc}</p>
+                    `;}
 document.getElementById("images").innerHTML = immaginiDaInserire;
 
 let currentImg = 0;
 const newImage = document.querySelectorAll(".images img");
+const newTitle = document.querySelectorAll("#imageTitle");
+const newDesc = document.querySelectorAll("#imageDesc");
+
 newImage[currentImg].classList.add("active");
+newTitle[currentImg].classList.add("active");
+newDesc[currentImg].classList.add("active");
+
 
 document.getElementById("btn-next").addEventListener("click", function () {
     console.log("avanti");
     if (currentImg < images.length - 1) {
         newImage[currentImg].classList.remove("active");
+        newTitle[currentImg].classList.remove("active");
+        newDesc[currentImg].classList.remove("active");
         currentImg++;
         newImage[currentImg].classList.add("active");
+        newTitle[currentImg].classList.add("active");
+        newDesc[currentImg].classList.add("active");
     }else if (currentImg == images.length - 1) {
         newImage[currentImg].classList.remove("active");
+        newTitle[currentImg].classList.remove("active");
+        newDesc[currentImg].classList.remove("active");
         currentImg = 0;
         newImage[currentImg].classList.add("active");
+        newTitle[currentImg].classList.add("active");
+        newDesc[currentImg].classList.add("active");
     }
 });
 
@@ -50,11 +72,21 @@ document.getElementById("btn-back").addEventListener("click", function () {
     console.log("indietro");
     if (currentImg > 0) {
         newImage[currentImg].classList.remove("active");
+        newTitle[currentImg].classList.remove("active");
+        newDesc[currentImg].classList.remove("active");
         currentImg--;
         newImage[currentImg].classList.add("active");
+        newTitle[currentImg].classList.add("active");
+        newDesc[currentImg].classList.add("active");
     }else if (currentImg == 0) {
         newImage[currentImg].classList.remove("active");
+        newTitle[currentImg].classList.remove("active");
+        newDesc[currentImg].classList.remove("active");
         currentImg = images.length - 1;
         newImage[currentImg].classList.add("active");
+        newTitle[currentImg].classList.add("active");
+        newDesc[currentImg].classList.add("active");
     }
 });
+
+
